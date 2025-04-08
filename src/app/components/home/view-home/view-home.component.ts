@@ -21,11 +21,26 @@ export class ViewHomeComponent {
   firstname! : string ;
   isSidebarOpen = false;  // Para controlar si el sidebar está abierto o cerrado
   isSubmenuOpen: { [key: string]: boolean } = {};  // Control para los submenús
+  private intervalId: any;
+  currentDateTime: string="";
   constructor(private router: Router, private userService: UserService, private aRoute: ActivatedRoute){
     this.id = this.aRoute.snapshot.paramMap.get('id');
   }
   ngOnInit(){
     this.currentComponent = 'inicio';
+    this.intervalId = setInterval(() => {
+      this.updateDateTime(); // Actualiza la fecha y hora cada segundo
+    }, 1000);
+  }
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId); // Limpia el intervalo al destruir el componente
+    }
+  }
+
+  updateDateTime(): void {
+    const now = new Date();
+    this.currentDateTime = now.toLocaleString(); // Ajusta el formato según tus necesidades
   }
   selectComponent(component: string) {
     this.currentComponent = component;
