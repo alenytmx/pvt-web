@@ -19,6 +19,8 @@ export class ViewHomeComponent {
   saveRol : string = '';
   store : string | undefined = '';
   firstname! : string ;
+  isSidebarOpen = false;  // Para controlar si el sidebar está abierto o cerrado
+  isSubmenuOpen: { [key: string]: boolean } = {};  // Control para los submenús
   constructor(private router: Router, private userService: UserService, private aRoute: ActivatedRoute){
     this.id = this.aRoute.snapshot.paramMap.get('id');
   }
@@ -33,5 +35,12 @@ export class ViewHomeComponent {
   }
   userIsLoggedIn(): boolean {
     return this.currentUser !== null; 
+  }
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;  // Alternar visibilidad del sidebar
+  }
+
+  toggleSubmenu(menu: string) {
+    this.isSubmenuOpen[menu] = !this.isSubmenuOpen[menu];  // Alternar submenú
   }
 }

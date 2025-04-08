@@ -1,60 +1,97 @@
-/* Estilo para la imagen del logo */
-.logo-img {
-  width: 40px;
-  height: auto;
+/* ======= SIDEBAR BASE ======= */
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: linear-gradient(180deg, #1e1e2f 0%, #151521 100%);
+  color: #fff;
+  padding: 1rem;
+  transition: left 0.3s ease-in-out, background-color 0.3s;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 1040;
 }
 
-/* Estilos de los items del menú */
-.navbar {
-  background-color: #000000;
-  padding: 0.5rem 1rem;
+/* LOGO */
+.sidebar .logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #ffd700;
 }
 
+/* ======= NAV LINKS ======= */
 .nav-link {
-  color: #ffffff;
+  color: #ddd;
+  border-radius: 8px;
+  padding: 10px 15px;
+  transition: background 0.3s ease, color 0.3s;
   font-weight: 500;
-  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* Hover y color activo */
 .nav-link:hover {
-  color: #FFD700;
-  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
 }
 
 .nav-link.active {
-  color: #FFD700;
+  background-color: #ffd700;
+  color: #1e1e2f !important;
+  font-weight: bold;
+  box-shadow: 0 0 10px #ffd70088;
 }
 
-/* Ajustes para dispositivos móviles */
-.navbar-toggler {
-  border-color: rgba(255, 255, 255);
-}
-.navbar-nav .nav-link {
-  font-size: 10px; /* Tamaño más pequeño */
+/* ======= SUBMENÚ ======= */
+.nav .nav {
+  padding-left: 1rem;
+  transition: all 0.3s ease-in-out;
 }
 
-/* Estilo base del navbar */
-.collapse {
-  display: none;
-  transition: height 0.3s ease;
+.nav .nav-link {
+  font-size: 0.95rem;
+  color: #bbb;
+  padding-left: 25px;
 }
 
-.collapse.show {
-  display: block;
+.nav .nav-link.active {
+  background-color: #ffa500;
+  color: #1e1e2f;
+  box-shadow: 0 0 6px #ffa500aa;
 }
 
-
-.navbar-nav {
-flex-direction: column; /* Para que los elementos aparezcan en vertical en móviles */
+/* ======= CONTENT AREA ======= */
+.content-area {
+  margin-left: 250px;
+  padding: 2rem;
+  transition: margin-left 0.3s ease-in-out;
 }
 
-@media (min-width: 992px) {
-.collapse {
-  display: flex !important; /* Asegura que el menú esté visible en pantallas grandes */
+/* ======= MOBILE TOGGLE ======= */
+@media (max-width: 992px) {
+  .sidebar {
+    left: -250px;
+  }
+
+  .toggled .sidebar {
+    left: 0;
+  }
+
+  .toggled .content-area {
+    margin-left: 0;
+  }
 }
 
-.navbar-nav {
-  flex-direction: row; /* Los elementos aparecen en horizontal en pantallas grandes */
+/* ======= TOGGLE BUTTON ======= */
+.sidebar-toggle {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
 }
+
+.sidebar-toggle:hover {
+  color: #ffd700;
 }
+  

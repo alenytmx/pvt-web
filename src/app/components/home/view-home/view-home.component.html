@@ -1,65 +1,131 @@
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-      <a class="navbar-brand d-flex align-items-center" routerLink="/home"
-      [class.active]="currentComponent === 'home'"
-      (click)="selectComponent('home')"
-      >
-        <!-- <img src="camion.ico" alt="Logo" class="logo-img me-2" /> -->
-      </a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon white"></span>
+<!-- CONTENEDOR GENERAL -->
+<div class="wrapper d-flex" [class.toggled]="isSidebarOpen">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <span class="fs-5 fw-bold text-white">Punto Cora</span>
+      <!-- Botón Hamburguesa -->
+      <button class="sidebar-toggle d-lg-none" (click)="toggleSidebar()">
+        <i class="fas fa-times"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav" #navbarNav>
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a
-              class="nav-link menu-item"
-              [class.active]="currentComponent === 'home'"
-              (click)="selectComponent('home')">
-              <i class="fas fa-home me-2"></i>Inicio
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link menu-item" (click)="logout()">
-              <i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión
-            </a>
-          </li>
-        </ul>
-      </div>
     </div>
+
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'inicio'" (click)="selectComponent('inicio')">
+          <i class="fas fa-home me-2"></i>Inicio
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'usuarios'" (click)="selectComponent('usuarios')">
+          <i class="fas fa-users me-2"></i>Usuarios
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'proveedores'" (click)="selectComponent('proveedores')">
+          <i class="fas fa-truck me-2"></i>Proveedores
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'clientes'" (click)="selectComponent('clientes')">
+          <i class="fas fa-user me-2"></i>Clientes
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'listaPrecios'" (click)="selectComponent('listaPrecios')">
+          <i class="fas fa-tags me-2"></i>Lista de precios
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'compras'" (click)="selectComponent('compras')">
+          <i class="fas fa-shopping-cart me-2"></i>Compras
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'inventario'" (click)="selectComponent('inventario')">
+          <i class="fas fa-cogs me-2"></i>Inventario
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'ventas'" (click)="selectComponent('ventas')">
+          <i class="fas fa-cash-register me-2"></i>Ventas
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'devoluciones'" (click)="selectComponent('devoluciones')">
+          <i class="fas fa-undo me-2"></i>Devoluciones
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'gastos'" (click)="selectComponent('gastos')">
+          <i class="fas fa-money-bill-wave me-2"></i>Gastos
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'corteCaja'" (click)="selectComponent('corteCaja')">
+          <i class="fas fa-cash-register me-2"></i>Corte de caja
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'reportes'" (click)="selectComponent('reportes')">
+          <i class="fas fa-chart-line me-2"></i>Reportes
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="currentComponent === 'configuracion'" (click)="selectComponent('configuracion')">
+          <i class="fas fa-cogs me-2"></i>Configuración
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">
+          <i class="fas fa-sign-out-alt me-2"></i>Salir
+        </a>
+      </li>
+    </ul>
   </nav>
-  
-  <div id="content" class="content-wrapper">
-      <ng-container *ngIf="currentComponent === 'error' && saveRol != 'superadmin'">
-        <p>¡Oops!. Reinicia la página y inicia sesión de nuevo.</p>
-      </ng-container>
-      <ng-container *ngIf="!currentComponent || currentComponent === 'default'">
-        <p class="text-black">Componente vacio</p>
-      </ng-container>
-  
-      <ng-container *ngIf="currentComponent === 'home'">
-        <div class="container mt-5 p-4 rounded shadow-lg" style="background-color: #f9f9f9;">
-          <div class="text-center mb-4">
-            <h4 class="font-weight-bold text-secondary" style="background-color:rgb(32, 22, 114);">
-              ¡Bienvenido a Punto Cora! Simplificando tu comercio, potenciando tus ventas.
-            </h4>
-          </div>
-          
-          <div class="d-flex justify-content-center mb-3">
-            <!-- <img src="camion.ico" class="rounded-circle border roboto-bold" style="width: 80px; height: 80px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"> -->
-          </div>
-  
-          <p class="d-flex justify-content-center roboto-bold" style="font-size: 30px;">Hola! ¿Qué deseas hacer hoy?</p>
-        </div>
-        <br>
-        <br>
-      </ng-container>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="content-area flex-grow-1">
+    <!-- Aquí va tu lógica actual de ng-container -->
+    <ng-container *ngIf="currentComponent === 'inicio'">
+      <h2>Bienvenido al Home</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'usuarios'">
+      <h2>Usuarios</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'proveedores'">
+      <h2>Proveedores</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'clientes'">
+      <h2>Clientes</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'listaPrecios'">
+      <h2>Lista de Precios</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'compras'">
+      <h2>Compras</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'inventario'">
+      <h2>Inventario</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'ventas'">
+      <h2>Ventas</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'devoluciones'">
+      <h2>Devoluciones</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'gastos'">
+      <h2>Gastos</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'corteCaja'">
+      <h2>Corte de Caja</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'reportes'">
+      <h2>Reportes</h2>
+    </ng-container>
+    <ng-container *ngIf="currentComponent === 'configuracion'">
+      <h2>Configuración</h2>
+    </ng-container>
   </div>
+</div>
