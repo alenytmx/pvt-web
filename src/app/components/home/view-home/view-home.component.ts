@@ -24,7 +24,9 @@ export class ViewHomeComponent {
   constructor(private router: Router, private userService: UserService, private aRoute: ActivatedRoute){
     this.id = this.aRoute.snapshot.paramMap.get('id');
   }
-  ngOnInit(){}
+  ngOnInit(){
+    this.currentComponent = 'inicio';
+  }
   selectComponent(component: string) {
     this.currentComponent = component;
   }
