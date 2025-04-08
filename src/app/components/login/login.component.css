@@ -1,6 +1,6 @@
 .login-container {
     height: 100vh;
-    background: linear-gradient(to right, #3e2955, #212c41);
+    background: linear-gradient(to right, #ffa500, #ffa500);
   }
   
   .login-card {
@@ -17,12 +17,12 @@
   }
   
   .btn-primary {
-    background-color: #2575fc;
-    border-color: #2575fc;
+    background-color:  #ffa500;
+    border-color:  #ffa500;
   }
   
   .btn-primary:hover {
-    background-color: #1a5dd1;
-    border-color: #1a5dd1;
+    background-color:  #ffa500;
+    border-color:  #ffa500;
   }
   
