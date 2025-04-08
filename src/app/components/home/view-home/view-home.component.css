@@ -1,0 +1,60 @@
+/* Estilo para la imagen del logo */
+.logo-img {
+  width: 40px;
+  height: auto;
+}
+
+/* Estilos de los items del menú */
+.navbar {
+  background-color: #000000;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link {
+  color: #ffffff;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover y color activo */
+.nav-link:hover {
+  color: #FFD700;
+  transform: scale(1.1);
+}
+
+.nav-link.active {
+  color: #FFD700;
+}
+
+/* Ajustes para dispositivos móviles */
+.navbar-toggler {
+  border-color: rgba(255, 255, 255);
+}
+.navbar-nav .nav-link {
+  font-size: 10px; /* Tamaño más pequeño */
+}
+
+/* Estilo base del navbar */
+.collapse {
+  display: none;
+  transition: height 0.3s ease;
+}
+
+.collapse.show {
+  display: block;
+}
+
+
+.navbar-nav {
+flex-direction: column; /* Para que los elementos aparezcan en vertical en móviles */
+}
+
+@media (min-width: 992px) {
+.collapse {
+  display: flex !important; /* Asegura que el menú esté visible en pantallas grandes */
+}
+
+.navbar-nav {
+  flex-direction: row; /* Los elementos aparecen en horizontal en pantallas grandes */
+}
+}

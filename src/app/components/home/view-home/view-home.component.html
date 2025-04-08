@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" routerLink="/home"
+      [class.active]="currentComponent === 'home'"
+      (click)="selectComponent('home')"
+      >
+        <!-- <img src="camion.ico" alt="Logo" class="logo-img me-2" /> -->
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon white"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" #navbarNav>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link menu-item"
+              [class.active]="currentComponent === 'home'"
+              (click)="selectComponent('home')">
+              <i class="fas fa-home me-2"></i>Inicio
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link menu-item" (click)="logout()">
+              <i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  <div id="content" class="content-wrapper">
+      <ng-container *ngIf="currentComponent === 'error' && saveRol != 'superadmin'">
+        <p>¡Oops!. Reinicia la página y inicia sesión de nuevo.</p>
+      </ng-container>
+      <ng-container *ngIf="!currentComponent || currentComponent === 'default'">
+        <p class="text-black">Componente vacio</p>
+      </ng-container>
+  
+      <ng-container *ngIf="currentComponent === 'home'">
+        <div class="container mt-5 p-4 rounded shadow-lg" style="background-color: #f9f9f9;">
+          <div class="text-center mb-4">
+            <h4 class="font-weight-bold text-secondary" style="background-color:rgb(32, 22, 114);">
+              ¡Bienvenido a Punto Cora! Simplificando tu comercio, potenciando tus ventas.
+            </h4>
+          </div>
+          
+          <div class="d-flex justify-content-center mb-3">
+            <!-- <img src="camion.ico" class="rounded-circle border roboto-bold" style="width: 80px; height: 80px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);"> -->
+          </div>
+  
+          <p class="d-flex justify-content-center roboto-bold" style="font-size: 30px;">Hola! ¿Qué deseas hacer hoy?</p>
+        </div>
+        <br>
+        <br>
+      </ng-container>
+  </div>

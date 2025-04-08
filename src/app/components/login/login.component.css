@@ -1,0 +1,28 @@
+.login-container {
+    height: 100vh;
+    background: linear-gradient(to right, #3e2955, #212c41);
+  }
+  
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 1rem;
+    background-color: #ffffffcc;
+    backdrop-filter: blur(10px);
+  }
+  
+  .login-card h3 {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .btn-primary {
+    background-color: #2575fc;
+    border-color: #2575fc;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1a5dd1;
+    border-color: #1a5dd1;
+  }
+  
